@@ -1,4 +1,3 @@
-import sys
 import pygame
 from settings import Settings
 from ship import Ship
@@ -16,15 +15,10 @@ def run_game():
 # 设置背景色
 # bg_color = (230,230,230)
 
-
     while True:
 # 监听键盘和鼠标事件
-        gf.check_events()
-# 每次循环时都重绘屏幕
-        screen.fill(ai_settings.bg_color)
-
-        ship.blitme()
-# 使最新绘制的屏幕可见。即刷新屏幕
-        pygame.display.flip()                       
+        gf.check_events(ship)
+        ship.update()
+        gf.update_screen(ai_settings,screen,ship)
 
 run_game()
